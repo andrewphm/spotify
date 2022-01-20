@@ -6,7 +6,7 @@ export default function Home() {
   consoleMessage();
 
   return (
-    <div className="">
+    <div className="bg-black h-screen overflow-hidden">
       <main>
         <Sidebar />
 
