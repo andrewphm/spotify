@@ -12,11 +12,16 @@ import { useEffect, useState } from 'react';
 // hooks
 import useSpotify from '../hooks/useSpotify';
 
+// Redux
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentPlaylist } from '../redux/playlistSlice';
+
 const Sidebar = () => {
   const spotifyApi = useSpotify();
-
   const { data: session, status } = useSession();
   const [playlists, setPlaylists] = useState([]);
+
+  // Redux
 
   useEffect(() => {
     if (spotifyApi.getAccessToken()) {
