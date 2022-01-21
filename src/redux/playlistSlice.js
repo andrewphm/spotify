@@ -3,15 +3,19 @@ import { createSlice } from '@reduxjs/toolkit';
 export const playlistSlice = createSlice({
   name: 'playlist',
   initialState: {
-    id: null,
+    id: '3LFIBdP7eZXJKqf3guepZ1',
+    playlist: null,
   },
   reducers: {
-    setCurrentPlaylist: (state, action) => {
+    setCurrentPlaylistId: (state, action) => {
       state.id = action.payload;
+    },
+    setPlaylist: (state, action) => {
+      state.playlist = action.payload;
     },
   },
 });
 
-export const { setCurrentPlaylist } = playlistSlice.actions;
+export const { setCurrentPlaylistId, setPlaylist } = playlistSlice.actions;
 
 export default playlistSlice.reducer;

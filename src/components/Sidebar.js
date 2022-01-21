@@ -14,14 +14,14 @@ import useSpotify from '../hooks/useSpotify';
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentPlaylist } from '../redux/playlistSlice';
+import { setCurrentPlaylistId } from '../redux/playlistSlice';
 
 const Sidebar = () => {
   const spotifyApi = useSpotify();
   const { data: session, status } = useSession();
   const [playlists, setPlaylists] = useState([]);
 
-  // Redux
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (spotifyApi.getAccessToken()) {
@@ -37,7 +37,7 @@ const Sidebar = () => {
   }, [session, spotifyApi]);
 
   return (
-    <div className="text-gray-500 p-5 text-sm border-r border-gray-900 overflow-y-scroll h-screen scrollbar-hide">
+    <div className="text-gray-500 p-5 text-sm border-r border-gray-900 overflow-y-scroll h-screen scrollbar-hide max-w-xs">
       <div className="space-y-4">
         <button
           onClick={() => signOut()}
@@ -78,7 +78,11 @@ const Sidebar = () => {
         {/* Playlists... */}
         {playlists.map((playlist) => {
           return (
-            <p key={playlist.id} className="cursor-pointer hover:text-white">
+            <p
+              key={playlist.id}
+              className="cursor-pointer hover:text-white"
+              onClick={() => dispatch(setCurrentPlaylistId(playlist.id))}
+            >
               {playlist.name}
             </p>
           );
