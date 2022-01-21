@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth';
 import SpotifyProvider from 'next-auth/providers/spotify';
-import spotifyApi, { LOGIN_URL } from '../../../../lib/spotify';
+import spotifyApi, { LOGIN_URL } from '../../../lib/spotify';
 
 const refreshAccessToken = async (token) => {
   try {
@@ -44,6 +44,7 @@ export default NextAuth({
     async jwt({ token, account, user }) {
       // Initial sign in
       if (account && user) {
+        console.log('Initial Sign In');
         return {
           ...token,
           accessToken: account.access_token,
