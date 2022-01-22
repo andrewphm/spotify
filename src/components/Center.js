@@ -48,19 +48,19 @@ const Center = () => {
   return (
     <div className="flex-grow">
       <header className="absolute top-5 right-8">
-        <div className="flex items-center bg-black space-x-2 opacity-90 hover:opacity-80 cursor-pointer rounded-full p-1 pr-5 text-gray-500">
+        <div className="flex items-center text-white bg-black space-x-2 opacity-90 hover:opacity-80 cursor-pointer rounded-full p-1 pr-5">
           <img
             src={session?.user?.image}
             alt=""
             className="rounded-full w-10 h-10"
           />
-          <h2 className="text-gray-500">{session?.user.name}</h2>
+          <h2>{session?.user.name}</h2>
           <ChevronDownIcon className="h-5 w-5" />
         </div>
       </header>
 
       <section
-        className={`flex items-end space-x-7 bg-gradient-to-b to-black ${color} h-80 text-white padding-8`}
+        className={`flex items-end space-x-7 bg-gradient-to-b to-black ${color} h-80 text-white p-8`}
       >
         <img
           src={playlist?.images?.[0]?.url}
@@ -69,7 +69,7 @@ const Center = () => {
         />
         <div>
           <p>PLAYLIST</p>
-          <h1 className="text-xl md:text-2xl xl:text-4xl font-bold">
+          <h1 className="text-xl md:text-4xl xl:text-5xl font-bold">
             {playlist?.name}
           </h1>
         </div>
