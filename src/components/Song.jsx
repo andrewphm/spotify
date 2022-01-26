@@ -1,8 +1,30 @@
 import formatDuration from '../utilities/formatDuration';
+import useSpotify from '../hooks/useSpotify';
+
+// Redux
+import { useSelector, useDispatch } from 'react-redux';
+import { setCurrentTrackId, setIsPlaying } from '../redux/SongSlice';
 
 const Song = ({ track, index }) => {
+  const spotifyApi = useSpotify();
+  const dispatch = useDispatch();
+  const currentTrackId = useSelector((state) => state.song.currentTrackId);
+  const isPlaying = useSelector((state) => state.song.isPlaying);
+
+  const playSong = () => {
+    dispatch(setCurrentTrackId(track.track.id));
+    dispatch(setIsPlaying());
+
+    spotifyApi.play({
+      uris: [track.track.uri],
+    });
+  };
+
   return (
-    <div className="grid grid-cols-[16px_4fr_2fr_.5fr] rounded-[4px] h-[56px] gap-[16px] relative hover:bg-[#302b2b] px-4 cursor-default">
+    <div
+      onClick={playSong}
+      className="grid grid-cols-[16px_4fr_2fr_.5fr] rounded-[4px] h-[56px] gap-[16px] relative hover:bg-[#302b2b] px-4 cursor-default"
+    >
       <div className="index text-gray-300 flex items-center justify-center">
         {index + 1}
       </div>
