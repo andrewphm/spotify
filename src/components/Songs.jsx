@@ -34,9 +34,9 @@ const Songs = () => {
         </div>
       </div>
 
-      {playlist?.tracks.items.map((track, i) => (
-        <Song key={track.id} index={i} track={track} />
-      ))}
+      {playlist?.tracks.items.map((track, i) => {
+        return <Song key={track.track.id} index={i} track={track} />;
+      })}
     </div>
   );
 };

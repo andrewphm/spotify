@@ -1,10 +1,8 @@
 import formatDuration from '../utilities/formatDuration';
 
 const Song = ({ track, index }) => {
-  console.log(track);
-
   return (
-    <div className="grid grid-cols-[16px_4fr_2fr_.5fr] rounded-[4px] h-[56px] gap-[16px] relative hover:bg-[#302b2b] hover:opacity-[.8] px-4">
+    <div className="grid grid-cols-[16px_4fr_2fr_.5fr] rounded-[4px] h-[56px] gap-[16px] relative hover:bg-[#302b2b] px-4 cursor-default">
       <div className="index text-gray-300 flex items-center justify-center">
         {index + 1}
       </div>
